@@ -13,10 +13,17 @@ class Top(Resource):
         
 class get_dl_file_list(Resource):
     def post(self):
+        data_dict = {}
+
         data = request.get_data()
         if data != None:
             data = data.decode('utf-8').split('&')
-            print(data)
+            for i in data:
+                i_split = i.split('=')
+                if len(i_split) == 2:
+                    data_dict[f'{i_split[0]}'] = f'{i_split[1]}'
+
+        print(data_dict)
 
         return {'balls': True}
 
