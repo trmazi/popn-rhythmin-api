@@ -13,9 +13,9 @@ def format_player(uuid, name) -> dict:
         'ArcadePt': 100,
         'FriendRequested': 0,
         'UpdateDate': '9/1/2022',
-        'LoginBonusId': 1,
+        'LoginBonusId': 0,
         'LoginCount': 69,
-        'Login': True,
+        'Login': 1,
     }
     print(profile)
     return profile
