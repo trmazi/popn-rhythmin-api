@@ -14,7 +14,9 @@ class Top(Resource):
 class get_dl_file_list(Resource):
     def post(self):
         print(request.get_json())
-        return {'balls'}
+        print(request.get_data())
+        print(request.query_string)
+        return {'balls': True}
 
 # Service statics
 uri_end = '/index.jsp'
