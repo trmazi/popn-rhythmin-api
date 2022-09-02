@@ -15,7 +15,7 @@ def root():
 
 @app.route(f'{uri_start}/get_dl_file_list{uri_end}')
 def get_dl_file_list():
-    return RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True})
+    return RequestData.put_request_data({'alloc': 'JP', 'release': '200', 'date': '9/2/2022', 'retain': True})
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
