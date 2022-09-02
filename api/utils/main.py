@@ -1,4 +1,5 @@
 from flask import Flask
+import json
 import argparse
 
 from api.request import RequestData
@@ -15,11 +16,11 @@ def root():
 
 @app.route(f'{uri_start}/get_event_info{uri_end}')
 def get_event_info():
-    return {'GamePlay': []}
+    return json.dumps({'GamePlay': []})
 
 @app.route(f'{uri_start}/get_dl_file_list{uri_end}')
 def get_dl_file_list():
-    return {'List': []}
+    return json.dumps({'List': []})
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
