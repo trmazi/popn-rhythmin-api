@@ -36,7 +36,7 @@ class RequestData():
         for key, val in data_dict.items():
             data = f'{data}{key}={val}&'
 
-        return data.encode('utf-8')
+        return data
         
 class get_dl_file_list(Resource):
     def post(self):
