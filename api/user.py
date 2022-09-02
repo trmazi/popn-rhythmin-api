@@ -4,7 +4,7 @@ from api.request import RequestData
 def format_player(uuid) -> dict:
     profile = {
         'PlayerID': '1',
-        'PlayerName': 'FUCK',
+        'PlayerName': 'Trmazi',
         'InviteCnt': 100,
         'ArcadePt': 1000,
         'FriendRequested': 0,
