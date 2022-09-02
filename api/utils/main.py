@@ -22,23 +22,7 @@ class get_event_info(Resource):
 
 class get_dl_file_list(Resource):
     def post(self):
-        data = {'List': [
-            {
-                'Id': 0,
-                'Url': 'https://iidxfan.xyz/dl0',
-                'Size': 100
-            },
-            {
-                'Id': 1,
-                'Url': 'https://iidxfan.xyz/dl0',
-                'Size': 100
-            },
-            {
-                'Id': 2,
-                'Url': 'https://iidxfan.xyz/dl0',
-                'Size': 100
-            }
-        ]}
+        data = {'List': []}
         return data
 
 #add services
