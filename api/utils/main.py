@@ -1,10 +1,11 @@
 from flask import Flask
-import json
+from flask_restful import Api, Resource
 import argparse
 
 from api.request import RequestData
 
 app = Flask(__name__)
+api = Api(app)
 
 # Service statics
 uri_start = '/apr/main/cgi'
@@ -14,59 +15,35 @@ uri_end = '/index.jsp'
 def root():
     return "Pop'n Rhythmin Server!"
 
-@app.route(f'{uri_start}/get_event_info{uri_end}')
-def get_event_info():
-    data = {'GamePlay': [
-        {
-            'Id': 0,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        },
-        {
-            'Id': 1,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        },
-        {
-            'Id': 2,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        }
-    ]}
+class get_event_info(Resource):
+    def post(self):
+        data = {'GamePlay': []}
+        return data
 
-    response = app.response_class(
-        response=json.dumps(data),
-        status=200,
-        mimetype='application/json'
-    )
-    return response
+class get_dl_file_list():
+    def post(self):
+        data = {'List': [
+            {
+                'Id': 0,
+                'Url': 'https://iidxfan.xyz/dl0',
+                'Size': 100
+            },
+            {
+                'Id': 1,
+                'Url': 'https://iidxfan.xyz/dl0',
+                'Size': 100
+            },
+            {
+                'Id': 2,
+                'Url': 'https://iidxfan.xyz/dl0',
+                'Size': 100
+            }
+        ]}
+        return data
 
-@app.route(f'{uri_start}/get_dl_file_list{uri_end}')
-def get_dl_file_list():
-    data = {'List': [
-        {
-            'Id': 0,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        },
-        {
-            'Id': 1,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        },
-        {
-            'Id': 2,
-            'Url': 'https://iidxfan.xyz/dl0',
-            'Size': 100
-        }
-    ]}
-    
-    response = app.response_class(
-        response=json.dumps(data),
-        status=200,
-        mimetype='application/json'
-    )
-    return response
+#add services
+api.add_resource(get_dl_file_list, f'{uri_start}/get_dl_file_list{uri_end}')
+api.add_resource(get_event_info, f'{uri_start}/get_event_info{uri_end}')
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
