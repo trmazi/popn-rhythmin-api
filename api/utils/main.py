@@ -10,9 +10,12 @@ config: Dict[str, Any] = {}
 class Top(Resource):
     def get(self):
         return "Pop'n Rhythmin Server!"
-        
-class get_dl_file_list(Resource):
-    def post(self):
+
+class RequestData():
+    '''
+    Deals with all request data, returns it how we want it.
+    '''
+    def get_request_data() -> Dict:
         data_dict = {}
 
         data = request.get_data()
@@ -23,9 +26,24 @@ class get_dl_file_list(Resource):
                 if len(i_split) == 2:
                     data_dict[f'{i_split[0]}'] = f'{i_split[1]}'
 
-        print(data_dict)
+        return data_dict
 
-        return {'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True}
+    def put_request_data(data_dict) -> bytes:
+        data = ''
+        if data_dict == None:
+            return None
+
+        for key, val in data_dict:
+            data = f'{data}{key}={val}&'
+
+        return data.encode('utf-8')
+        
+class get_dl_file_list(Resource):
+    def post(self):
+        data = RequestData.get_request_data()
+        print(data)
+
+        return RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True})
 
 # Service statics
 uri_end = '/index.jsp'
