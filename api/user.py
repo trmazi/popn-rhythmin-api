@@ -1,10 +1,10 @@
 from flask_restful import Resource
 from api.request import RequestData
 
-def format_player(uuid) -> dict:
+def format_player(uuid, name) -> dict:
     profile = {
-        'PlayerID': '1',
-        'PlayerName': 'Trmazi',
+        'PlayerID': uuid,
+        'PlayerName': name,
         'InviteCnt': 1,
         'ArcadePt': 100,
         'FriendRequested': 0,
@@ -24,7 +24,7 @@ class get_player(Resource):
             if uuid == None:
                 return {'ErrorCode': 'bad uuid!'}
 
-            return format_player(uuid)
+            return format_player(uuid, 'deez')
 
         else: return {'ErrorCode': 'Bad request!'}, 200
 
@@ -40,6 +40,6 @@ class new_player(Resource):
             if name == None:
                 return {'ErrorCode': 'bad name!'}
 
-            return format_player(uuid)
+            return format_player(uuid, name)
 
         else: return {'ErrorCode': 'Bad request!'}, 200
