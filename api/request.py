@@ -9,6 +9,7 @@ class RequestData():
         data_dict = {}
 
         data = request.get_data()
+        print(f'New request! Sent data: {data}')
         if data != None:
             data = data.decode('utf-8').split('&')
             for i in data:

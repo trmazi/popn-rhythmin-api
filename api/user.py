@@ -3,4 +3,11 @@ from api.request import RequestData
 
 class get_player(Resource):
     def post(self):
-        print(RequestData.get_request_data())
+        request = RequestData.get_request_data()
+        if request == None:
+            return {'ErrorCode': 'bad request!'}
+        
+        if request['uuid'] == None:
+            return {'ErrorCode': 'bad uuid!'}
+
+        print(request['uuid'])
