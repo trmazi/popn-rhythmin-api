@@ -16,7 +16,7 @@ api.add_resource(Top, '/')
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
-    parser.add_argument("-p", "--port", help="Port to listen on. Defaults to 8020", type=int, default=8020)
+    parser.add_argument("-p", "--port", help="Port to listen on. Defaults to 80", type=int, default=80)
     args = parser.parse_args()
 
     # Run the app
