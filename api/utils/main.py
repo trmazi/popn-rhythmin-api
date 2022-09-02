@@ -20,7 +20,7 @@ class get_event_info(Resource):
         data = {'GamePlay': []}
         return data
 
-class get_dl_file_list():
+class get_dl_file_list(Resource):
     def post(self):
         data = {'List': [
             {
