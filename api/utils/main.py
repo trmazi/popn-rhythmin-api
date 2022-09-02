@@ -13,9 +13,11 @@ class Top(Resource):
         
 class get_dl_file_list(Resource):
     def post(self):
-        print(request.get_json())
-        print(request.get_data())
-        print(request.query_string)
+        data = request.get_data()
+        if data != None:
+            data = data.decode('utf-8').split('&')
+            print(data)
+
         return {'balls': True}
 
 # Service statics
