@@ -1,6 +1,10 @@
 from flask_restful import Resource
 from api.request import RequestData
 
+def bad_end(why) -> dict:
+    print(f'Bad request data: {why}')
+    return {'ErrorCode': why}
+
 def format_player(uuid, name) -> dict:
     profile = {
         'PlayerID': uuid,
@@ -13,6 +17,7 @@ def format_player(uuid, name) -> dict:
         'LoginCount': 69,
         'Login': True,
     }
+    print(profile)
     return profile
 
 class get_player(Resource):
@@ -22,11 +27,11 @@ class get_player(Resource):
             uuid = request['uuid']
 
             if uuid == None:
-                return {'ErrorCode': 'bad uuid!'}
+                return bad_end('bad uuid!')
 
             return format_player(uuid, 'deez')
 
-        else: return {'ErrorCode': 'Bad request!'}, 200
+        else: return bad_end('bad request!')
 
 class new_player(Resource):
     def post(self):
@@ -36,10 +41,10 @@ class new_player(Resource):
             name = request['name']
 
             if uuid == None:
-                return {'ErrorCode': 'bad uuid!'}
+                return bad_end('bad uuid!')
             if name == None:
-                return {'ErrorCode': 'bad name!'}
+                return bad_end('bad name!')
 
             return format_player(uuid, name)
 
-        else: return {'ErrorCode': 'Bad request!'}, 200
+        else: return bad_end('bad request!')
