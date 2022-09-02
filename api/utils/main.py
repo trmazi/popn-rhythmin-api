@@ -33,6 +33,8 @@ class RequestData():
         if data_dict == None:
             return None
 
+        print(data_dict)
+
         for key, val in data_dict:
             data = f'{data}{key}={val}&'
 
