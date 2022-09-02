@@ -43,6 +43,7 @@ class get_dl_file_list(Resource):
         data = RequestData.get_request_data()
         print(data)
 
+        print(RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True}))
         return RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True})
 
 # Service statics
