@@ -25,7 +25,7 @@ class get_dl_file_list(Resource):
 
         print(data_dict)
 
-        return {'balls': True}
+        return {'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True}
 
 # Service statics
 uri_end = '/index.jsp'
