@@ -16,7 +16,23 @@ def root():
 
 @app.route(f'{uri_start}/get_event_info{uri_end}')
 def get_event_info():
-    data = {'GamePlay': []}
+    data = {'GamePlay': [
+        {
+            'Id': 0,
+            'Url': 'https://iidxfan.xyz/dl0',
+            'Size': 100
+        },
+        {
+            'Id': 1,
+            'Url': 'https://iidxfan.xyz/dl0',
+            'Size': 100
+        },
+        {
+            'Id': 2,
+            'Url': 'https://iidxfan.xyz/dl0',
+            'Size': 100
+        }
+    ]}
 
     response = app.response_class(
         response=json.dumps(data),
