@@ -17,13 +17,3 @@ class RequestData():
                     data_dict[f'{i_split[0]}'] = f'{i_split[1]}'
 
         return data_dict
-
-    def put_request_data(data_dict) -> bytes:
-        data = ''
-        if data_dict == None:
-            return None
-
-        for key, val in data_dict.items():
-            data = f'{data}{key}={val}&'
-
-        return data.encode('utf-8')

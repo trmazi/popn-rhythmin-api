@@ -13,9 +13,13 @@ uri_end = '/index.jsp'
 def root():
     return "Pop'n Rhythmin Server!"
 
+@app.route(f'{uri_start}/get_event_info{uri_end}')
+def get_event_info():
+    return {'GamePlay': []}
+
 @app.route(f'{uri_start}/get_dl_file_list{uri_end}')
 def get_dl_file_list():
-    return RequestData.put_request_data({'alloc': 'JP', 'release': '200', 'date': '00:00:00 UTC on 1 January 2001', 'retain': 'true'})
+    return {'List': []}
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
