@@ -16,11 +16,25 @@ def root():
 
 @app.route(f'{uri_start}/get_event_info{uri_end}')
 def get_event_info():
-    return json.dumps({'GamePlay': []})
+    data = {'GamePlay': []}
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route(f'{uri_start}/get_dl_file_list{uri_end}')
 def get_dl_file_list():
-    return json.dumps({'List': []})
+    data = {'List': []}
+    
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
