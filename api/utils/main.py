@@ -1,58 +1,21 @@
-from flask import Flask, request
-from flask_restful import Api, Resource
-from typing import Any, Dict
+from flask import Flask
 import argparse
 
+from api.request import RequestData
+
 app = Flask(__name__)
-api = Api(app)
-config: Dict[str, Any] = {}
-
-class Top(Resource):
-    def get(self):
-        return "Pop'n Rhythmin Server!"
-
-class RequestData():
-    '''
-    Deals with all request data, returns it how we want it.
-    '''
-    def get_request_data() -> Dict:
-        data_dict = {}
-
-        data = request.get_data()
-        if data != None:
-            data = data.decode('utf-8').split('&')
-            for i in data:
-                i_split = i.split('=')
-                if len(i_split) == 2:
-                    data_dict[f'{i_split[0]}'] = f'{i_split[1]}'
-
-        return data_dict
-
-    def put_request_data(data_dict) -> bytes:
-        data = ''
-        if data_dict == None:
-            return None
-
-        for key, val in data_dict.items():
-            data = f'{data}{key}={val}&'
-
-        return data
-        
-class get_dl_file_list(Resource):
-    def post(self):
-        data = RequestData.get_request_data()
-        print(data)
-
-        print(RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True}))
-        return RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True})
 
 # Service statics
-uri_end = '/index.jsp'
 uri_start = '/apr/main/cgi'
+uri_end = '/index.jsp'
 
-#add services
-api.add_resource(Top, '/')
-api.add_resource(get_dl_file_list, f'{uri_start}/get_dl_file_list{uri_end}')
+@app.route('/')
+def root():
+    return "Pop'n Rhythmin Server!"
+
+@app.route(f'{uri_start}/get_dl_file_list{uri_end}')
+def get_dl_file_list():
+    return RequestData.put_request_data({'alloc': '', 'release': '200', 'date': '9/2/2022', 'retain': True})
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="3rd party server for Pop'n Rhythin.")
