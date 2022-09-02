@@ -3,16 +3,15 @@ from api.request import RequestData
 
 def format_player(uuid) -> dict:
     profile = {
-        'PlayerID': {
-            'PlayerName': 'Trmazi',
-            'InviteCnt': 1,
-            'ArcadePt': 100,
-            'FriendRequested': 0,
-            'UpdateDate': '9/1/2022',
-            'LoginBonusId': 1,
-            'LoginCount': 6,
-            'Login': True,
-        }
+        'PlayerID': '1',
+        'PlayerName': 'Trmazi',
+        'InviteCnt': 1,
+        'ArcadePt': 100,
+        'FriendRequested': 0,
+        'UpdateDate': '9/1/2022',
+        'LoginBonusId': 1,
+        'LoginCount': 69,
+        'Login': True,
     }
     return profile
 
