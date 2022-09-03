@@ -48,3 +48,24 @@ class new_player(Resource):
             return format_player(uuid, name)
 
         else: return bad_end('bad request!')
+
+class link_kid(Resource):
+    def post(self):
+        request = RequestData.get_request_data()
+        if request != None:
+            uuid = request['uuid']
+            konami_id = request['konami_id']
+            password = request['password']
+
+            if konami_id == None:
+                return bad_end('bad konami_id!')
+            if uuid == None:
+                return bad_end('bad uuid!')
+            if password == None:
+                return bad_end('bad password!')
+
+            return {
+                'ErrorCode': 0
+            }
+
+        else: return bad_end('bad request!')
