@@ -87,3 +87,25 @@ class invited(Resource):
             }
 
         else: return bad_end(4)
+
+class get_present_list(Resource):
+    def post(self):
+        request = RequestData.get_request_data()
+        if request != None:
+            uuid = request['uuid']
+
+            if uuid == None:
+                return bad_end(4)
+
+            presents = []
+            for i in range(5):
+                presents.append({
+                    'PresentId': i,
+                    'ItemId': i+10000,
+                    'ItemNum': 1,
+                    'Info': 'A gift for you!'
+                })
+
+            return {'PresentList': presents}
+
+        else: return bad_end(4)
