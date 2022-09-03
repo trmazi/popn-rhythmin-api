@@ -27,7 +27,7 @@ class get_dl_file_list(Resource):
                     if filename == 'path.py':
                         continue
 
-                    print({StockPath.getStockPath()}/{filename})
+                    print(f'{StockPath.getStockPath()}/{filename}')
                     filelist.append({
                         'Id': index,
                         'Url': f'https://popapp.ez4dj.com/cdn/stock/{filename}',
