@@ -1,0 +1,3 @@
+include api/cdn/*
+include api/cdn/stock/*
+include api/cdn/store/*

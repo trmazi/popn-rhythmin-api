@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_restful import Api
 import argparse
 
@@ -6,6 +6,9 @@ from api.events import get_dl_file_list, get_event_info
 from api.user import get_player, new_player, link_kid
 from api.music import get_recommend_list, packlist
 from api.network import search_master
+
+from api.cdn.stock.path import StockPath
+from api.cdn.store.path import StorePath
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,6 +24,14 @@ def root():
 @app.route('/apr/main/cgi/new/index.jsp')
 def new():
     return "Welcome!"
+
+@app.route('/cdn/stock/<path:filename>')
+def stock_files(filename):
+    return send_from_directory(StockPath.getStockPath(), filename)
+
+@app.route('/cdn/store/<path:filename>')
+def store_files(filename):
+    return send_from_directory(StorePath.getStorePath(), filename)
 
 #add services
 api.add_resource(get_dl_file_list, f'{uri_start}/get_dl_file_list{uri_end}')
