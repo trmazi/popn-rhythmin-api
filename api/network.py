@@ -2,7 +2,7 @@ from flask_restful import Resource
 
 class search_master(Resource):
     def get(self):
-        return {'GameCenterList': [
+        response = {'GameCenterList': [
             {
                 'ID': 0,
                 'Lat': 39.908987,
@@ -12,3 +12,6 @@ class search_master(Resource):
                 'Model': [1, 1, 1]
             }
         ]}
+
+        print(response)
+        return response
