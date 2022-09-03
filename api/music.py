@@ -42,5 +42,6 @@ class packlist(Resource):
             'Version': '2.0.0',
             'PackList': filelist,
             'Promotion': filelist,
+            'HasNext': 0,
             'Error': 'The store is currently offline.\nPlease wait for it to be back!'
         }
