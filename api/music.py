@@ -49,8 +49,6 @@ class packlist(Resource):
                     })
                     index += 1
 
-        print(f'Available store items: {filelist}')
-        print(f'Promotions: {filelist}')
         return {
             'Version': '2.0.0',
             'PackList': filelist,
