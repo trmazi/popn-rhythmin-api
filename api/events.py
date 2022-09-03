@@ -24,10 +24,10 @@ class get_dl_file_list(Resource):
         if os.path.exists(StockPath.getStockPath()):
             for subdir, dirs, files in os.walk(StockPath.getStockPath()):
                 for filename in files:
-                    print(filename[3:])
-                    if filename[3:] != 'orb':
+                    print(filename[:3])
+                    if filename[:3] != 'orb':
                         continue
-                    
+
                     filelist.append({
                         'Id': index,
                         'Url': f'https://popapp.ez4dj.com/cdn/stock/{filename}',
