@@ -33,7 +33,7 @@ class packlist(Resource):
                         continue
 
                     filelist.append({
-                        'ID': int(filename.removesuffix('.orb')),
+                        'ID': int(filename.replace('.orb', '')),
                     })
 
         return {
