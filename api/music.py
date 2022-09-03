@@ -1,5 +1,7 @@
+import os
 from flask_restful import Resource
 from api.request import RequestData
+from api.cdn.store.path import StorePath
 
 def bad_end(why) -> dict:
     print(f'Bad request data: {why}')
@@ -23,9 +25,20 @@ class get_recommend_list(Resource):
 
 class packlist(Resource):
     def get(self):
+        filelist = []
+        if os.path.exists(StorePath.getStorePath()):
+            for subdir, dirs, files in os.walk(StorePath.getStorePath()):
+                for filename in files:
+                    if filename[-3:] != 'orb':
+                        continue
+
+                    filelist.append({
+                        'ID': int(filename.removesuffix('.orb')),
+                    })
+
         return {
             'Version': '2.0.0',
-            'PackList': [],
-            'Promotion': [],
+            'PackList': filelist,
+            'Promotion': filelist,
             'Error': 'The store is currently offline.\nPlease wait for it to be back!'
         }
