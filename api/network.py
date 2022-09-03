@@ -8,7 +8,7 @@ class search_master(Resource):
                 'Lat': 39.908987,
                 'Long': -86.065242,
                 'Name': 'Boss Battle Games',
-                'Open': 1,
+                'Open': '1',
                 'Model': [1, 1, 1]
             }
         ]}
