@@ -7,7 +7,7 @@ def bad_end(why) -> dict:
 
 def format_player(uuid, name) -> dict:
     profile = {
-        'PlayerID': uuid,
+        'PlayerId': uuid,
         'PlayerName': name,
         'InviteCnt': 1,
         'ArcadePt': 100,
@@ -15,7 +15,7 @@ def format_player(uuid, name) -> dict:
         'UpdateDate': '9/1/2022',
         'LoginBonusId': 0,
         'LoginCount': 69,
-        'Login': 0,
+        'Login': 1,
     }
     print(profile)
     return profile
