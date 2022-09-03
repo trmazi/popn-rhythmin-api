@@ -7,7 +7,7 @@ def bad_end(why) -> dict:
 
 def format_player(uuid, name) -> dict:
     profile = {
-        'PlayerId': '1234-5678',
+        'PlayerId': '1234567',
         'PlayerName': name,
         'InviteCnt': 1,
         'ArcadePt': 100,
@@ -27,11 +27,11 @@ class get_player(Resource):
             uuid = request['uuid']
 
             if uuid == None:
-                return bad_end('bad uuid!')
+                return bad_end(1)
 
             return format_player(uuid, 'deez')
 
-        else: return bad_end('bad request!')
+        else: return bad_end(1)
 
 class new_player(Resource):
     def post(self):
@@ -41,13 +41,13 @@ class new_player(Resource):
             name = request['name']
 
             if uuid == None:
-                return bad_end('bad uuid!')
+                return bad_end(1)
             if name == None:
-                return bad_end('bad name!')
+                return bad_end(1)
 
             return format_player(uuid, name)
 
-        else: return bad_end('bad request!')
+        else: return bad_end(1)
 
 class link_kid(Resource):
     def post(self):
@@ -58,12 +58,32 @@ class link_kid(Resource):
             password = request['password']
 
             if konami_id == None:
-                return bad_end('bad konami_id!')
+                return bad_end(1)
             if uuid == None:
-                return bad_end('bad uuid!')
+                return bad_end(1)
             if password == None:
-                return bad_end('bad password!')
+                return bad_end(1)
 
-            return {}
+            return {
+                'ErrorCode': 2,
+            }
 
-        else: return bad_end('bad request!')
+        else: return bad_end(1)
+
+class invited(Resource):
+    def post(self):
+        request = RequestData.get_request_data()
+        if request != None:
+            uuid = request['uuid']
+            player_id = request['player_id']
+
+            if uuid == None:
+                return bad_end(4)
+            if player_id == None:
+                return bad_end(4)
+
+            return {
+                'ErrorCode': 2,
+            }
+
+        else: return bad_end(4)
