@@ -11,7 +11,7 @@ def format_player(uuid, name) -> dict:
         'PlayerName': name,
         'InviteCnt': 1,
         'ArcadePt': 100,
-        'FriendRequested': 0,
+        'FriendRequested': 1,
         'UpdateDate': '9/1/2022',
         'LoginBonusId': 0,
         'LoginCount': 69,
