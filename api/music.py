@@ -36,6 +36,8 @@ class packlist(Resource):
                         'ID': int(filename.replace('.orb', '')),
                     })
 
+        print(f'Available store items: {filelist}')
+        print(f'Promotions: {filelist}')
         return {
             'Version': '2.0.0',
             'PackList': filelist,
