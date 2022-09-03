@@ -32,6 +32,7 @@ class get_dl_file_list(Resource):
                         'Url': f'https://popapp.ez4dj.com/cdn/stock/{filename}',
                         'Size': os.path.getsize(f'{StockPath.getStockPath()}/{filename}')
                     })
+                    index += 1
         
         print(f'Sending these files: {filelist}')
         return {'List': filelist}
