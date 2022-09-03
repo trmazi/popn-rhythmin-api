@@ -32,11 +32,11 @@ class packlist(Resource):
                 for filename in files:
                     if filename[-3:] != 'orb':
                         continue
-
+                    filename = filename.replace('.orb', '')
                     filelist.append({
-                        'ID': int(filename.replace('.orb', '')),
-                        'MusicList': [int(filename.replace('.orb', '')), 1, 2, 3],
-                        'AcvMusicList': [int(filename.replace('.orb', '')), 1, 2, 3],
+                        'ID': int(filename),
+                        'MusicList': [int(filename), 1, 2, 3],
+                        'AcvMusicList': [int(filename), 1, 2, 3],
                         'Name': f'Rhythmin Pack #{index}',
                         'Comment': 'Brought to you by PhaseII',
                         'ShortComment': 'Brought to you by PhaseII',
