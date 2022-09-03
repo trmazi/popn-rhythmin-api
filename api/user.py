@@ -15,7 +15,7 @@ def format_player(uuid, name) -> dict:
         'UpdateDate': '9/1/2022',
         'LoginBonusId': 0,
         'LoginCount': 69,
-        'Login': 1,
+        'Login': 0,
     }
     print(profile)
     return profile
