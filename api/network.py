@@ -13,7 +13,7 @@ class search_master(Resource):
                     'Model': [1]
                 }
             ],
-            'Version': '200',
+            'Version': '2.0.0',
             'Info': 'Da Map.',
             'Mark': [
                 {
