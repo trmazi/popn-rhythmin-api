@@ -24,8 +24,7 @@ class get_dl_file_list(Resource):
         if os.path.exists(StockPath.getStockPath()):
             for subdir, dirs, files in os.walk(StockPath.getStockPath()):
                 for filename in files:
-                    print(filename[:3])
-                    if filename[:3] != 'orb':
+                    if filename[-3:] not in ['orb', 'acv']:
                         continue
 
                     filelist.append({
@@ -33,5 +32,6 @@ class get_dl_file_list(Resource):
                         'Url': f'https://popapp.ez4dj.com/cdn/stock/{filename}',
                         'Size': os.path.getsize(f'{StockPath.getStockPath()}/{filename}')
                     })
-            
+        
+        print(f'Sending these files: {filelist}')
         return {'List': filelist}
