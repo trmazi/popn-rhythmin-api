@@ -101,7 +101,7 @@ class get_present_list(Resource):
             for i in range(5):
                 presents.append({
                     'PresentId': i,
-                    'ItemId': i+10000,
+                    'ItemId': i,
                     'ItemNum': 1,
                     'Info': 'A gift for you!'
                 })
