@@ -4,7 +4,7 @@ import argparse
 
 from api.events import get_dl_file_list, get_event_info
 from api.user import get_player, new_player
-from api.music import get_recommend_list
+from api.music import get_recommend_list, packlist
 from api.network import search_master
 
 app = Flask(__name__)
@@ -28,6 +28,7 @@ api.add_resource(get_event_info, f'{uri_start}/get_event_info{uri_end}')
 api.add_resource(get_player, f'{uri_start}/get_player{uri_end}')
 api.add_resource(new_player, f'{uri_start}/new_player{uri_end}')
 api.add_resource(get_recommend_list, f'{uri_start}/get_recommend_list{uri_end}')
+api.add_resource(packlist, f'{uri_start}/packlist{uri_end}')
 api.add_resource(search_master, f'{uri_start}/search_master{uri_end}')
 
 def main() -> None:

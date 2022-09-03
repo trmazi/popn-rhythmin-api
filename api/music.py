@@ -20,3 +20,12 @@ class get_recommend_list(Resource):
             }
 
         else: return bad_end('bad request!')
+
+class packlist(Resource):
+    def get(self):
+        return {
+            'Version': '2.0.0',
+            'PackList': [],
+            'Promotion': [],
+            'Error': 'We fucked up!'
+        }
