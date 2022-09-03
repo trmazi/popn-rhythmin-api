@@ -64,8 +64,6 @@ class link_kid(Resource):
             if password == None:
                 return bad_end('bad password!')
 
-            return {
-                'ErrorCode': 0
-            }
+            return {}
 
         else: return bad_end('bad request!')
