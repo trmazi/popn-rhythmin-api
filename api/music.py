@@ -25,16 +25,9 @@ class get_recommend_list(Resource):
 
 class packlist(Resource):
     def get(self):
-        filelist = []
-        if os.path.exists(StorePath.getStorePath()):
-            index = 0
-            for subdir, dirs, files in os.walk(StorePath.getStorePath()):
-                for filename in files:
-                    if filename[-3:] != 'orb':
-                        continue
-                    filename = filename.replace('.orb', '')
-                    filelist.append({
-                        'ID': int(filename),
+        '''
+        Stuff that is used but not here.
+
                         'MusicList': [int(filename), 1, 2, 3],
                         'AcvMusicList': [int(filename), 1, 2, 3],
                         'Name': f'Rhythmin Pack #{index}',
@@ -46,13 +39,23 @@ class packlist(Resource):
                         'ArtistURL': 'https://iidxfan.xyz',
                         'ArtistBunnerURL': 'https://iidxfan.xyz',
                         'AcvNum': index,
+        '''
+
+        filelist = []
+        if os.path.exists(StorePath.getStorePath()):
+            index = 0
+            for subdir, dirs, files in os.walk(StorePath.getStorePath()):
+                for filename in files:
+                    if filename[-3:] != 'orb':
+                        continue
+                    filename = filename.replace('.orb', '')
+                    filelist.append({
+                        'ID': int(filename),
                     })
                     index += 1
 
         return {
             'Version': '2.0.0',
             'PackList': filelist,
-            'Promotion': filelist,
-            'HasNext': 0,
-            'Error': 'The store is currently offline.\nPlease wait for it to be back!'
+            'Promotion': []
         }
