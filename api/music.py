@@ -50,7 +50,7 @@ class packlist(Resource):
                         continue
                     filename = filename.replace('.orb', '')
                     filelist.append({
-                        'ID': int(filename),
+                        'ID': 1,
                     })
                     index += 1
 
