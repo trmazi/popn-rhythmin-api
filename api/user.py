@@ -98,13 +98,12 @@ class get_present_list(Resource):
                 return bad_end(4)
 
             presents = []
-            for i in range(5):
-                presents.append({
-                    'PresentId': i,
-                    'ItemId': i,
-                    'ItemNum': 1,
-                    'Info': 'A gift for you!'
-                })
+            presents.append({
+                'PresentId': 1,
+                'ItemId': 1,
+                'ItemNum': 1,
+                'Info': 'A gift for you!'
+            })
 
             return {'PresentList': presents}
 
